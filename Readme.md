@@ -46,11 +46,3 @@ cd FSD-Training
 ## Usage
 
 Navigate through the folders to find the relevant materials for each module. Each module contains a README file with instructions and resources.
-
-## Contributing
-
-We welcome contributions to improve the training materials. Please fork the repository and create a pull request with your changes.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
