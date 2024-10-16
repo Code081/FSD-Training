@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>day4</title>
+</head>
+<body>
+    
+</body>
+<script>
+    document.getElementById("btn").onclick = function(){
+        document.getElementById("para").innerHTML = "<b>ABESEC</b>";
+    }
+    document.getElementById("btn").addEventListener("click",function(){
+        document.getElementById("para").innerHTML = "<b>Another Click</b>";
+    });
+
+    //to create a tag in html using only js
+    let button = document.createElement("button");
+    button.innerHTML = "Click Me JS";
+    button.id = "btn2";
+    document.body.appendChild(button);
+
+    let para = document.createElement("p");
+    para.innerHTML = "Insert Here JS";
+    para.id = "para2";
+    document.body.appendChild(para);
+
+</script>
+</html>

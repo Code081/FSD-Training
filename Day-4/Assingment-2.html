@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assingment-2</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //learning to create HTML using JS
+    let heading = document.createElement("h1");
+    heading.innerHTML = "Events in JavaScript";
+    document.body.appendChild(heading);
+
+    let button = document.createElement("button");
+    button.innerHTML = "Click Me JS";
+    button.id = "btn2";
+    document.body.appendChild(button);
+
+    let para = document.createElement("p");
+    para.innerHTML = "Insert Here JS";
+    para.id = "para2";
+    document.body.appendChild(para);
+
+    let div = document.createElement("div");
+    div.id = "div";
+    document.body.appendChild(div);
+    div.appendChild(heading);
+    div.appendChild(button);
+    div.appendChild(para);
+</script>
+</html>
