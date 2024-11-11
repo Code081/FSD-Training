@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Currency Converter</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 350px;
+            position: relative;
+        }
+        h1 {
+            margin-bottom: 30px;
+            color: #333;
+            position: relative;
+        }
+        .login {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 30px;
+        }
+        label {
+            margin-bottom: 10px;
+            color: #555;
+            text-align: left;
+            width: 100%;
+        }
+        input {
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            width: 100%;
+        }
+        button {
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #submit {
+            background-color: #007BFF;
+            color: white;
+        }
+        #submit:hover {
+            background-color: #0056b3;
+        }
+        #reset {
+            background-color: #f44336;
+            color: white;
+        }
+        #reset:hover {
+            background-color: #d32f2f;
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+        .money {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 150px;
+            height: 130px;
+            background: url('https://www.transparentpng.com/thumb/dollar/dollar-high-quality-png-1.png') no-repeat center center;
+            background-size: contain;
+            animation: fall 3s linear infinite;
+            opacity: 0;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="heading">Currency Converter</h1>
+        <form id="loginForm" action="./converter.html" onsubmit="return validateForm()">
+            <div class="login">
+                <label for="login">Login</label>
+                <input type="text" name="login_id" id="log" placeholder="Enter your email" oninput="triggerMoneyAnimation()">
+                <label for="Password">Password</label>
+                <input type="password" name="pass" id="pass" placeholder="Enter your password" oninput="triggerMoneyAnimation()">
+            </div>
+            <div id="buttons"> 
+                <button type="submit" id="submit">Submit</button>
+                <button type="reset" id="reset">Reset</button>
+            </div>
+            <div class="error" id="error-message"></div>
+        </form>
+    </div>
+    <script>
+        function validateForm() {
+            var login = document.getElementById('log').value;
+            var password = document.getElementById('pass').value;
+            var errorMessage = document.getElementById('error-message');
+
+            if (!login.endsWith('@gmail.com') && !login.endsWith('@abes.ac.in')) {
+                errorMessage.textContent = "Please enter a valid email address.";
+                return false;
+            }
+
+            if (password.length < 6) {
+                errorMessage.textContent = "Password must be at least 6 characters long.";
+                return false;
+            }
+
+            errorMessage.textContent = "";
+            return true;
+        }
+
+        function triggerMoneyAnimation() {
+            const heading = document.getElementById('heading');
+            const money = document.createElement('div');
+            money.classList.add('money');
+            money.style.left = Math.random() * 100 + 'vw';
+            money.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(money);
+
+            setTimeout(() => {
+                money.remove();
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

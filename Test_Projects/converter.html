@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .currency-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        input, select, button {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 45%;
+        }
+        button {
+            width: 100%;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #conversion-rate {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 10px;
+            transition: opacity 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Currency Converter</h1>
+        <div class="currency-row">
+            <input id="amount1" type="number" placeholder="Amount">
+            <select id="cname1"></select>
+        </div>
+        <div class="currency-row">
+            <input id="amount2" type="number" placeholder="Amount" readonly>
+            <select id="cname2"></select>
+        </div>
+        <div id="conversion-rate">Conversion Rate: N/A</div>
+        <button id="convert">Convert</button>
+    </div>
+    <script>
+        async function display() {
+            let url = 'https://api.exchangerate-api.com/v4/latest/USD';
+            let response = await fetch(url);
+            let data = await response.json();
+            console.log(data);
+            populateCurrencyOptions(data);
+            push_Fetch_Data(data);
+        }
+
+        function populateCurrencyOptions(data) {
+            let currencySelect1 = document.getElementById('cname1');
+            let currencySelect2 = document.getElementById('cname2');
+            for (let currency in data.rates) {
+                let option1 = document.createElement('option');
+                option1.value = currency;
+                option1.textContent = currency;
+                currencySelect1.appendChild(option1);
+
+                let option2 = document.createElement('option');
+                option2.value = currency;
+                option2.textContent = currency;
+                currencySelect2.appendChild(option2);
+            }
+        }
+
+        function push_Fetch_Data(data){
+            const amount1Input = document.getElementById('amount1');
+            const amount2Input = document.getElementById('amount2');
+            const cname1Select = document.getElementById('cname1');
+            const cname2Select = document.getElementById('cname2');
+            const conversionRateDiv = document.getElementById('conversion-rate');
+
+            function updateConversionRate() {
+                let curr1 = cname1Select.value;
+                let curr2 = cname2Select.value;
+                let rate1 = data.rates[curr1];
+                let rate2 = data.rates[curr2];
+                let conversionRate = rate2 / rate1;
+                conversionRateDiv.style.opacity = 0;
+                setTimeout(() => {
+                    conversionRateDiv.textContent = `Conversion Rate: 1 ${curr1} = ${conversionRate.toFixed(4)} ${curr2}`;
+                    conversionRateDiv.style.opacity = 1;
+                }, 500);
+            }
+
+            cname1Select.onchange = updateConversionRate;
+            cname2Select.onchange = updateConversionRate;
+
+            document.getElementById('convert').onclick = function(){
+                let amount1 = amount1Input.value;
+                let curr1 = cname1Select.value;
+                let curr2 = cname2Select.value;
+                let rate1 = data.rates[curr1];
+                let rate2 = data.rates[curr2];
+                let conversionRate = rate2 / rate1;
+                let convertedAmount = amount1 * conversionRate;
+
+                amount2Input.value = convertedAmount.toFixed(2);
+            }
+
+            updateConversionRate();
+        }
+
+        display();
+    </script>
+</body>
+</html>
