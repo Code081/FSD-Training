@@ -13,15 +13,13 @@
     <!-- For react DOM -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <!-- For Bable CDN -->
-    <script>
+    <script type = 'text/babel'>
         const parent = document.getElementById('parent');
-        const root = ReactDOM.createRoot(parent); // you will have to create root unlike vanilaJS
-        //created root using react DOM
-        const h1 = React.createElement('h1', {}, 'Hello World');
-        //root.render(element); // rendering the element similar to DOM in vanilaJS appendchild() method
-        const item1 = react.createElement('li', {}, 'Item 1');
-        const item2 = react.createElement('li', {}, 'Item 2');
-        const ul = react.createElement('ul', {}, item1, item2);
+        const root = ReactDOM.createRoot(parent); 
+        const h1 =  <h1>Hello World</h1>;
+        const item1 = <li>Item 1</li>;
+        const item2 = <li>Item 2</li>;
+        const ul = <ul>{item1}{item2}</ul>;
         root.render([h1, ul]);
     </script>
 </body>
