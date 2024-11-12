@@ -10,3 +10,7 @@
 - for web we need react and react DOM.
 - There are two ways to make react project CDN and Bundler (CRA(create react app)- webpack, Vite - Esbuild, parcle - parcle)
 - CDN (content delivery network) is used when we don't want to install any files locally so we can access required files from CDNs
+Reconsilation process is when we use algo diffing algorithm to make changes in the virtual dom (orignal DOM - > Virtual DOM-> Changes made in Virtual DOM).
+
+## Using Bable
+- Writing HTML in Javascript

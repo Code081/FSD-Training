@@ -7,20 +7,22 @@
 </head>
 <body>
     <div id = 'parent'></div>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script> 
+    <!-- For react -->
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- For react DOM -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- For Bable CDN -->
     <script>
         const parent = document.getElementById('parent');
-        const h1 = document.createElement('h1');
-        h1.textContent = 'Hello, React!';
-        parent.appendChild(h1);
-
-        const ul = document.createElement('ul');
-        parent.appendChild(ul);
-        const li1 = document.createElement('li');
-        li1.textContent = 'Item 1';
-        ul.appendChild(li1);
-        const li2 = document.createElement('li');
-        li2.textContent = 'Item 2';
-        ul.appendChild(li2);
+        const root = ReactDOM.createRoot(parent); // you will have to create root unlike vanilaJS
+        //created root using react DOM
+        const h1 = React.createElement('h1', {}, 'Hello World');
+        //root.render(element); // rendering the element similar to DOM in vanilaJS appendchild() method
+        const item1 = react.createElement('li', {}, 'Item 1');
+        const item2 = react.createElement('li', {}, 'Item 2');
+        const ul = react.createElement('ul', {}, item1, item2);
+        root.render([h1, ul]);
     </script>
 </body>
 </html>
