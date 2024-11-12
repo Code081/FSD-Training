@@ -13,4 +13,4 @@
 Reconsilation process is when we use algo diffing algorithm to make changes in the virtual dom (orignal DOM - > Virtual DOM-> Changes made in Virtual DOM).
 
 ## Using Bable
-- Writing HTML in Javascript
+- Writing HTML in Javascript (babel is a transpiler)
