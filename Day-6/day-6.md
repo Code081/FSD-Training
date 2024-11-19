@@ -14,3 +14,12 @@ Reconsilation process is when we use algo diffing algorithm to make changes in t
 
 ## Using Bable
 - Writing HTML in Javascript (babel is a transpiler)
+
+## using CRA 
+- if there is a ^ in dependencies in packages.json in CRA folder directory. It will only take updates for patches 
+- if there is a ~ in dependecies in packages.json in CRA folder dir. it will only take minor changes
+- if there is a major changes you need to use `npm update @latest`
+
+- npm install changes the 'package-lock.json'.
+- npx (node package executor) - this installed the files directly to the package not in local system.
+- npm (node package manager) - downloads the packages first to local machine and then installs to the pacakge
