@@ -1,7 +1,24 @@
 .app{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  border: 3px solid blue;;
+  height: 100vh;
+}
+.Counter button{
+  padding: 10px;
+  margin: 10px;
+  font-size: 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+.Counter button:hover{
+  background-color: #e1e1e1;
+}
+.Counter h2{
+  font-size: 30px;
+  margin: 10px;
+  
 }
