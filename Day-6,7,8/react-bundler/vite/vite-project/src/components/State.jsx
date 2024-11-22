@@ -13,7 +13,7 @@ return (
         }}>Decreasing</button>
         <h2>{count}</h2>
 
-        <h1 style={{color : color }}>My Favourite Color is {color} !</h1>
+        <h1>My Favourite Color is <h1 style={{color:color}}>{color}!</h1></h1>
         <button onClick={()=>{
             setColor('blue')
         }}>Blue</button>
